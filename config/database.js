@@ -11,6 +11,7 @@ const dbConection = async() => {
 	  console.log(error);
 	  throw new Error('Error al conectar a la BD');
 	}
+	
 }
 module.exports ={   //para exportar
    dbConection

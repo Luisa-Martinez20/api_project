@@ -9,20 +9,18 @@ const app = express();
 //configurar cors
 
 app.use(cors()); //aceptar cualquier peticiòn de cualquier servidor
+
+app.use(express.json());
+
 //Estableciendo conexión a la BD
 dbConection();
 
 //Verificando variables de entorno
-console.log(process.env);
+//console.log(process.env);
 
 //Rutas de la API Proyectos 
-app.get('/',(req, res)=>{
-    res.status(400).json({
-    ok:true,
-    msg: 'Bienvenidos a node'
-    });
- }); 
-
+app.use('/api/usuarios',require('./routes/usuarios.routes'));
+app.use('/api/login', require('./routes/auth.routes'));
 //Còdigo para desplegar el servidor
 app.listen(process.env.PORT,()=>{
     console.log('Servidor Nodejs desplegado en el puerto: '+ process.env.PORT )
